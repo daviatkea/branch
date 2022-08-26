@@ -1,7 +1,9 @@
 import "./style.css";
+import Alpine from "alpinejs";
 
-const btnLight = document.querySelector("#light");
-const btnDark = document.querySelector("#dark");
+window.Alpine = Alpine;
+
+Alpine.start();
 
 if (
   localStorage.theme === "dark" ||
@@ -12,17 +14,3 @@ if (
 } else {
   document.documentElement.classList.remove("dark");
 }
-
-function toggleTheme(e) {
-  const mode = e.target.dataset.theme;
-  if (mode !== "dark") {
-    document.documentElement.classList.add("dark");
-    localStorage.theme = "dark";
-  } else {
-    document.documentElement.classList.remove("dark");
-    localStorage.theme = "light";
-  }
-}
-
-btnLight.addEventListener("click", toggleTheme);
-btnDark.addEventListener("click", toggleTheme);
